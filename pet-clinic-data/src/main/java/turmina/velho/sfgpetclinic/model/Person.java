@@ -1,4 +1,4 @@
-package turmina.velho.sfgpetclinic;
+package turmina.velho.sfgpetclinic.model;
 
 public class Person {
     private String firstName;
