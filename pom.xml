@@ -45,6 +45,9 @@
             </plugin>
         </plugins>
     </build>
+    <scm>
+        <developerConnection>scm:git:https://github.com/Nazareh/sfg-pet-clinic</developerConnection>
+    </scm>
 
 
 </project>
