@@ -1,11 +1,11 @@
 package turmina.velho.sfgpetclinic.map;
 
 import turmina.velho.sfgpetclinic.model.Pet;
-import turmina.velho.sfgpetclinic.services.CrudService;
+import turmina.velho.sfgpetclinic.services.PetService;
 
 import java.util.Set;
 
-public class PetServiceMap extends AbstractServiceMap<Pet,Long> implements CrudService<Pet,Long> {
+public class PetServiceMap extends AbstractServiceMap<Pet,Long> implements PetService{
 
     @Override
     public Set<Pet> findAll() {
