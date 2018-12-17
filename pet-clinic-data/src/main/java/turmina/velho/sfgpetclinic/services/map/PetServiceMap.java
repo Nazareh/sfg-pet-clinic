@@ -1,11 +1,13 @@
 package turmina.velho.sfgpetclinic.services.map;
 
+import org.springframework.stereotype.Service;
 import turmina.velho.sfgpetclinic.model.Pet;
-import turmina.velho.sfgpetclinic.services.CrudService;
+import turmina.velho.sfgpetclinic.services.PetService;
 
 import java.util.Set;
 
-public class PetServiceMap extends AbstractMapService<Pet,Long> implements CrudService<Pet,Long> {
+@Service
+public class PetServiceMap extends AbstractMapService<Pet,Long> implements PetService {
 
     @Override
     public Set<Pet> findAll() {
