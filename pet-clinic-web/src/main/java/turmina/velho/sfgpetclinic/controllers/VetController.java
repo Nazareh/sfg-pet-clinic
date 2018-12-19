@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import turmina.velho.sfgpetclinic.services.VetService;
 
 @Controller
-
 public class VetController {
     private final VetService vetService;
 
