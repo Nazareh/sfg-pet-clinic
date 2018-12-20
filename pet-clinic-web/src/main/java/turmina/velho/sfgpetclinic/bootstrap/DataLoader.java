@@ -5,19 +5,19 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import turmina.velho.sfgpetclinic.model.Owner;
 import turmina.velho.sfgpetclinic.model.Vet;
-import turmina.velho.sfgpetclinic.services.OwnerService;
-import turmina.velho.sfgpetclinic.services.VetService;
+import turmina.velho.sfgpetclinic.services.map.OwnerServiceMap;
+import turmina.velho.sfgpetclinic.services.map.VetServiceMap;
 
 @Component
 public class DataLoader implements CommandLineRunner {
 
-    private final OwnerService ownerService;
-    private final VetService vetService;
+    private final OwnerServiceMap ownerServiceMap;
+    private final VetServiceMap vetServiceMap;
 
     @Autowired
-    public DataLoader(OwnerService ownerService, VetService vetService) {
-        this.ownerService = ownerService;
-        this.vetService = vetService;
+    public DataLoader(OwnerServiceMap ownerServiceMap, VetServiceMap vetServiceMap) {
+        this.ownerServiceMap = ownerServiceMap;
+        this.vetServiceMap = vetServiceMap;
     }
 
     @Override
@@ -26,24 +26,24 @@ public class DataLoader implements CommandLineRunner {
         Owner owner1 = new Owner();
         owner1.setFirstName("Michael");
         owner1.setLastName("Weston");
-        ownerService.save(owner1);
+        ownerServiceMap.save(owner1);
 
         Owner owner2 = new Owner();
         owner2.setFirstName("Fiona");
         owner2.setLastName("Glenanne");
-        ownerService.save(owner2);
+        ownerServiceMap.save(owner2);
 
         System.out.println("Loaded Owners....");
 
         Vet vet1 = new Vet();
         vet1.setFirstName("Sam");
         vet1.setLastName("Axe");
-        vetService.save(vet1);
+        vetServiceMap.save(vet1);
 
         Vet vet2 = new Vet();
         vet2.setFirstName("Jessie");
         vet2.setLastName("Porter");
-        vetService.save(vet2);
+        vetServiceMap.save(vet2);
 
         System.out.println("Loaded Vets....");
 
