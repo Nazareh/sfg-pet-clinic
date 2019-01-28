@@ -4,11 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import turmina.velho.sfgpetclinic.model.Owner;
+import turmina.velho.sfgpetclinic.model.Pet;
 import turmina.velho.sfgpetclinic.model.PetType;
 import turmina.velho.sfgpetclinic.model.Vet;
 import turmina.velho.sfgpetclinic.services.PetTypeService;
 import turmina.velho.sfgpetclinic.services.map.OwnerServiceMap;
 import turmina.velho.sfgpetclinic.services.map.VetServiceMap;
+
+import java.time.LocalDate;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -38,11 +41,33 @@ public class DataLoader implements CommandLineRunner {
         Owner owner1 = new Owner();
         owner1.setFirstName("Michael");
         owner1.setLastName("Weston");
+        owner1.setAddress("123 Brickerel ");
+        owner1.setCity("Miami");
+        owner1.setTelephone("136546464");
+
+        Pet mikesPet = new Pet();
+        mikesPet.setPetType(savedDogPetType);
+        mikesPet.setOwner(owner1);
+        mikesPet.setBirthDate(LocalDate.now());
+        mikesPet.setName("Rosco");
+        owner1.getPets().add(mikesPet);
+
         ownerServiceMap.save(owner1);
 
         Owner owner2 = new Owner();
         owner2.setFirstName("Fiona");
         owner2.setLastName("Glenanne");
+        owner2.setAddress("123 Brickerel ");
+        owner2.setCity("Miami");
+        owner2.setTelephone("136546464");
+
+        Pet fionasPet = new Pet();
+        fionasPet.setPetType(savedCatPetType);
+        fionasPet.setOwner(owner2);
+        fionasPet.setBirthDate(LocalDate.now());
+        fionasPet.setName("Just cat");
+        owner2.getPets().add(fionasPet);
+
         ownerServiceMap.save(owner2);
 
         System.out.println("Loaded Owners....");
