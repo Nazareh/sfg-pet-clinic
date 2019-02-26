@@ -9,7 +9,7 @@ import turmina.velho.sfgpetclinic.services.VetService;
 import java.util.Set;
 
 @Service
-public class VetServiceMap extends AbstractMapService<Vet,Long> implements VetService {
+public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
 
     private final SpecialtyService specialtyService;
 
@@ -38,7 +38,7 @@ public class VetServiceMap extends AbstractMapService<Vet,Long> implements VetSe
     public Vet save(Vet object) {
         if (object.getSpecialties().size() > 0) {
             object.getSpecialties().forEach(specialty -> {
-                if (specialty.getId() == null){
+                if (specialty.getId() == null) {
                     Specialty savedSpecialty = specialtyService.save(specialty);
                     specialty.setId(savedSpecialty.getId());
                 }
