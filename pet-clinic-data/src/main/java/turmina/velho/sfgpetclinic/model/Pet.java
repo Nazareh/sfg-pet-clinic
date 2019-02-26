@@ -1,13 +1,27 @@
 package turmina.velho.sfgpetclinic.model;
 
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table (name = "pets")
 public class Pet extends BaseEntity {
 
+    @Column (name = "birth_date")
     private LocalDate birthDate;
+
+    @Column (name = "pet_type")
+    @ManyToOne
+    @JoinColumn (name = "type_id")
     private PetType petType;
+
+    @Column (name = "owner")
+    @ManyToOne
+    @JoinColumn (name = "owner_id")
     private Owner owner;
+
+    @Column (name = "name")
     private String name;
 
     public LocalDate getBirthDate() {
