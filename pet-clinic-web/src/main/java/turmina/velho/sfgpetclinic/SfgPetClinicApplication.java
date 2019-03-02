@@ -11,5 +11,4 @@ public class SfgPetClinicApplication {
         SpringApplication.run(SfgPetClinicApplication.class, args);
     }
 
-    //TODO Implement Multimodule layout
 }
