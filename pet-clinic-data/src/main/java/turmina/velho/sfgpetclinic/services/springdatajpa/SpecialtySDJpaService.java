@@ -1,5 +1,7 @@
 package turmina.velho.sfgpetclinic.services.springdatajpa;
 
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
 import turmina.velho.sfgpetclinic.model.Specialty;
 import turmina.velho.sfgpetclinic.repositories.SpecialtyRepository;
 import turmina.velho.sfgpetclinic.services.SpecialtyService;
@@ -7,6 +9,8 @@ import turmina.velho.sfgpetclinic.services.SpecialtyService;
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
+@Profile("springdatajpa")
 public class SpecialtySDJpaService implements SpecialtyService{
 
     private final SpecialtyRepository specialtyRepository;

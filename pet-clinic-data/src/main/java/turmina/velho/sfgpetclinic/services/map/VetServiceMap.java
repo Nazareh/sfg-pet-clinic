@@ -1,5 +1,6 @@
 package turmina.velho.sfgpetclinic.services.map;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import turmina.velho.sfgpetclinic.model.Specialty;
 import turmina.velho.sfgpetclinic.model.Vet;
@@ -9,6 +10,7 @@ import turmina.velho.sfgpetclinic.services.VetService;
 import java.util.Set;
 
 @Service
+@Profile({"default","map"})
 public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
 
     private final SpecialtyService specialtyService;

@@ -1,5 +1,6 @@
 package turmina.velho.sfgpetclinic.services.map;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import turmina.velho.sfgpetclinic.model.Visit;
 import turmina.velho.sfgpetclinic.services.VisitService;
@@ -7,6 +8,7 @@ import turmina.velho.sfgpetclinic.services.VisitService;
 import java.util.Set;
 
 @Service
+@Profile({"default","map"})
 public class VisitServiceMap extends AbstractMapService<Visit, Long> implements VisitService{
 
 
