@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import turmina.velho.sfgpetclinic.model.*;
-import turmina.velho.sfgpetclinic.services.OwnerService;
-import turmina.velho.sfgpetclinic.services.PetTypeService;
-import turmina.velho.sfgpetclinic.services.SpecialtyService;
-import turmina.velho.sfgpetclinic.services.VetService;
+import turmina.velho.sfgpetclinic.services.*;
 
 import java.time.LocalDate;
 
@@ -18,13 +15,15 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialtyService specialtyService;
+    private final VisitService visitService;
 
     @Autowired
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialtyService = specialtyService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -89,10 +88,18 @@ public class DataLoader implements CommandLineRunner {
         fionasPet.setBirthDate(LocalDate.now());
         fionasPet.setName("Just cat");
         owner2.getPets().add(fionasPet);
-
         ownerService.save(owner2);
 
         System.out.println("Loaded Owners....");
+
+        Visit catVisit  = new Visit();
+        catVisit.setPet(fionasPet);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("Sneezy kitty ");
+
+        visitService.save(catVisit);
+
+        System.out.println("Loaded Visits...");
 
         Vet vet1 = new Vet();
         vet1.setFirstName("Sam");

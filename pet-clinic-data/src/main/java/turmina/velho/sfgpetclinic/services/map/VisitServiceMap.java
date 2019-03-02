@@ -1,17 +1,14 @@
 package turmina.velho.sfgpetclinic.services.map;
 
+import org.springframework.stereotype.Service;
 import turmina.velho.sfgpetclinic.model.Visit;
 import turmina.velho.sfgpetclinic.services.VisitService;
 
 import java.util.Set;
 
+@Service
 public class VisitServiceMap extends AbstractMapService<Visit, Long> implements VisitService{
 
-    private final VisitService visitService;
-
-    public VisitServiceMap(VisitService visitService) {
-        this.visitService = visitService;
-    }
 
     @Override
     public Set<Visit> findAll() {
@@ -31,8 +28,17 @@ public class VisitServiceMap extends AbstractMapService<Visit, Long> implements 
     @Override
     public Visit save(Visit visit) {
 
-        if (visit.getPet() == null || visit.getPet().getOwner() == null || visit.getId() == null){
-            throw new RuntimeException("Invalid Visit");
+        if (visit.getPet() == null ||
+                visit.getPet().getOwner() == null ||
+                visit.getPet().getId() == null ||
+                visit.getPet().getOwner().getId() == null){
+
+
+            throw new RuntimeException("Invalid Visit" +
+                    visit.getPet().getName() +
+                    visit.getPet().getOwner().getFirstName() +
+                    visit.getId()
+            );
         }
         return super.save(visit);
     }
