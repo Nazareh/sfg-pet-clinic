@@ -8,7 +8,6 @@ import turmina.velho.sfgpetclinic.services.OwnerService;
 import turmina.velho.sfgpetclinic.services.PetTypeService;
 import turmina.velho.sfgpetclinic.services.SpecialtyService;
 import turmina.velho.sfgpetclinic.services.VetService;
-import turmina.velho.sfgpetclinic.services.map.OwnerServiceMap;
 
 import java.time.LocalDate;
 
@@ -21,7 +20,7 @@ public class DataLoader implements CommandLineRunner {
     private final SpecialtyService specialtyService;
 
     @Autowired
-    public DataLoader(OwnerServiceMap ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;

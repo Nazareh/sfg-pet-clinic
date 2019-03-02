@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import turmina.velho.sfgpetclinic.model.Owner;
 import turmina.velho.sfgpetclinic.model.Pet;
-import turmina.velho.sfgpetclinic.model.PetType;
 import turmina.velho.sfgpetclinic.services.OwnerService;
 import turmina.velho.sfgpetclinic.services.PetService;
 import turmina.velho.sfgpetclinic.services.PetTypeService;
@@ -12,7 +11,7 @@ import turmina.velho.sfgpetclinic.services.PetTypeService;
 import java.util.Set;
 
 @Service
-public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
+public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService{
 
     private final PetTypeService petTypeService;
     private final PetService petService;
