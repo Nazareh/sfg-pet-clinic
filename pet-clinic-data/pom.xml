@@ -91,7 +91,7 @@
                 <version>2.22.0</version>
                 <configuration>
                     <!-- CircleCI build workaround -->
-                        <useSystemClassLoader>false</useSystemClassLoader>
+                    <useSystemClassLoader>false</useSystemClassLoader>
                 </configuration>
                 <dependencies>
                     <dependency>
