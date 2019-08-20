@@ -9,6 +9,7 @@ import turmina.velho.sfgpetclinic.services.OwnerService;
 import turmina.velho.sfgpetclinic.services.PetService;
 import turmina.velho.sfgpetclinic.services.PetTypeService;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -76,5 +77,11 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
                 .filter(owner -> owner.getLastName().equalsIgnoreCase(lastName))
                 .findFirst()
                 .orElse(null);
+    }
+
+    @Override
+    public List<Owner> findAllByLastNameLike(String lastName) {
+        //todo - implement
+        return null;
     }
 }
