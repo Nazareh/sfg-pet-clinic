@@ -16,7 +16,7 @@
         <webjars-jquery-ui.version>1.11.4</webjars-jquery-ui.version>
         <webjars-jquery.version>2.2.4</webjars-jquery.version>
         <wro4j.version>1.8.0</wro4j.version>
-
+        <mockito.version>2.23.0</mockito.version>
     </properties>
 
     <dependencies>
@@ -128,16 +128,6 @@
                     </dependency>
                 </dependencies>
             </plugin>
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.0</version>
-                    <configuration>
-                        <!-- CircleCI build workaround -->
-                        <useSystemClassLoader>false</useSystemClassLoader>
-                    </configuration>
-            </plugin>
         </plugins>
     </build>
-
-
 </project>
