@@ -1,21 +1,22 @@
 package turmina.velho.sfgpetclinic.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import turmina.velho.sfgpetclinic.model.Pet;
 import turmina.velho.sfgpetclinic.model.Visit;
-import turmina.velho.sfgpetclinic.repositories.VisitRepository;
 import turmina.velho.sfgpetclinic.services.PetService;
 import turmina.velho.sfgpetclinic.services.VisitService;
 
 import javax.validation.Valid;
+import java.beans.PropertyEditorSupport;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/owners/*/pets/{petId}/visits")
+@RequestMapping("/owners/{ownerId}/pets/{petId}/visits")
 public class VisitController {
 
     private final VisitService visitService;
@@ -40,6 +41,13 @@ public class VisitController {
     @InitBinder
     public void initPetBinder (WebDataBinder dataBinder) {
         dataBinder.setDisallowedFields("id");
+
+        dataBinder.registerCustomEditor(LocalDate.class, new PropertyEditorSupport() {
+            @Override
+            public void setAsText(String text) throws IllegalArgumentException{
+                setValue(LocalDate.parse(text));
+            }
+        });
     }
 
     @GetMapping("/new")
