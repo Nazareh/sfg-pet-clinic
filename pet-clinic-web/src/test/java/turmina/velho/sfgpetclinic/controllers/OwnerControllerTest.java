@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import turmina.velho.sfgpetclinic.model.Owner;
 import turmina.velho.sfgpetclinic.services.OwnerService;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -77,6 +78,17 @@ class OwnerControllerTest{
                 .andExpect(model().attribute("selections",hasSize(2)));
     }
 
+    @Test
+    void processFindFormEmptyReturnRow() throws Exception {
+        when(ownerService.findAllByLastNameLike(anyString()))
+                .thenReturn(Arrays.asList(Owner.builder().id(1L).build(), Owner.builder().id(2L).build()));
+
+        mockMvc.perform(get("/owners").param("lastname",""))
+                .andExpect(status().isOk())
+                .andExpect(view().name("owners/ownersList"))
+                .andExpect(model().attribute("selections",hasSize(2)));
+
+    }
     @Test
     void displayOwner() throws Exception {
 
